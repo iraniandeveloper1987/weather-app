@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import search_icon from "../Assets/search.png";
@@ -56,6 +56,13 @@ function Weather() {
   const api_Key = "acf109af3c2d42ef4d1d0864cdbee4e6";
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_Key}&units=metric`;
+
+  useEffect(
+    () => {
+      fetchDate();
+    },
+    { location }
+  );
 
   const fetchDate = async () => {
     try {
